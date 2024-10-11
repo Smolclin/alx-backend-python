@@ -9,5 +9,7 @@ from typing import List
 
 
 def sum_list(input_list: List[float]) -> float:
-
+    """
+    return type sum of floating point
+    """
     return sum(input_list)
