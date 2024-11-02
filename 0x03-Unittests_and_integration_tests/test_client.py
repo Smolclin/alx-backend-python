@@ -41,8 +41,8 @@ class TestGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_url(self) -> None:
         """
-	Tests the _public_repos_url
-	"""
+        Tests the _public_repos_url
+        """
         with patch(
                 "client.GithubOrgClient.org",
                 new_callable=PropertyMock,
@@ -58,8 +58,8 @@ class TestGithubOrgClient(unittest.TestCase):
     @patch("client.get_json")
     def test_public_repos(self, mock_get_json: MagicMock) -> None:
         """
-	For testing public_repos
-	"""
+        For testing public_repos
+        """
         test_payload = {
             'repos_url': "https://api.github.com/users/google/repos",
             'repos': [
@@ -119,8 +119,8 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     def test_has_license(self, repo: Dict, key: str, expected: bool) -> None:
         """
-	Testing has_license
-	"""
+        Testing has_license
+        """
         gh_org_client = GithubOrgClient("google")
         client_has_licence = gh_org_client.has_license(repo, key)
         self.assertEqual(client_has_licence, expected)
@@ -141,8 +141,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         """
-	Sets up class fixtures before running the tests
-	"""
+        Sets up class fixtures before running the tests
+        """
         route_payload = {
             'https://api.github.com/orgs/google': cls.org_payload,
             'https://api.github.com/orgs/google/repos': cls.repos_payload,
@@ -158,8 +158,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     def test_public_repos(self) -> None:
         """
-	Testing the public_repos
-	"""
+        Testing the public_repos
+        """
         self.assertEqual(
             GithubOrgClient("google").public_repos(),
             self.expected_repos,
@@ -167,8 +167,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_with_license(self) -> None:
         """
-	Testing the public_repos method
-	"""
+        Testing the public_repos method
+        """
         self.assertEqual(
             GithubOrgClient("google").public_repos(license="apache-2.0"),
             self.apache2_repos,
@@ -177,6 +177,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     @classmethod
     def tearDownClass(cls) -> None:
         """
-	Removes all class fixtures after running all tests
-	"""
+        Removes all class fixtures after running all tests
+        """
         cls.get_patcher.stop()

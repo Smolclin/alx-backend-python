@@ -30,8 +30,8 @@ class TestAccessNestedMap(unittest.TestCase):
             expected: Union[Dict, int],
             ) -> None:
         """
-	Testing access_nested_map output
-	"""
+        Testing access_nested_map output
+        """
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
@@ -45,8 +45,8 @@ class TestAccessNestedMap(unittest.TestCase):
             exception: Exception,
             ) -> None:
         """
-	Testing access_nested_map exception raising
-	"""
+        Testing access_nested_map exception raising
+        """
         with self.assertRaises(exception):
             access_nested_map(nested_map, path)
 
@@ -65,8 +65,8 @@ class TestGetJson(unittest.TestCase):
             test_payload: Dict,
             ) -> None:
         """
-	Testing get_json output
-	"""
+        Testing get_json output
+        """
         attrs = {'json.return_value': test_payload}
         with patch("requests.get", return_value=Mock(**attrs)) as req_get:
             self.assertEqual(get_json(test_url), test_payload)
@@ -75,12 +75,12 @@ class TestGetJson(unittest.TestCase):
 
 class TestMemoize(unittest.TestCase):
     """
-   For testing the memoize function
+    For testing the memoize function
     """
     def test_memoize(self) -> None:
         """
-	Tests memoize output
-	"""
+        Tests memoize output
+        """
         class TestClass:
             def a_method(self):
                 return 42
